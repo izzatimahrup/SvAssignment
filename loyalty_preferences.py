@@ -14,12 +14,7 @@ def load_and_process_data_loyalty():
     url = 'https://raw.githubusercontent.com/izzatimahrup/SvAssignment/refs/heads/main/shopping_behaviour_cleaned.csv'
     try:
         df = pd.read_csv(url)
-        # 1. Rename columns (ADJUST THIS LIST TO 11 NAMES)
-        df.columns = [
-            "Customer ID", "Age", "Gender", "Item Purchased", "Category", "Purchase Amount (USD)",
-            "Location", "Size", "Color", "Season", "Review Rating" # List stops here (11 elements)
-            # You must remove the remaining 7 column names
-        ]
+
         
         # Data Transformation
         df['Gender'] = df['Gender'].map({1: 'Male', 0: 'Female'})
