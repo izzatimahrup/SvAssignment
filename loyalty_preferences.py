@@ -92,15 +92,30 @@ try:
         df, 
         x='Purchase Amount (USD)', 
         y='Frequency of Purchases',
-        title='Density Heatmap: Purchase Frequency vs Purchase Amount',
-        color_continuous_scale="Viridis",
-        labels={'Purchase Amount (USD)': 'Purchase Amount (USD)', 'Frequency of Purchases': 'Purchase Frequency'}
+        title='Density Heatmap: Purchase Frequency vs Purchase Amount (Customer Count)', # Make title more descriptive
+        color_continuous_scale="Plasma", # Change to 'Plasma' or 'Inferno' for better contrast in dark mode
+        labels={'Purchase Amount (USD)': 'Purchase Amount (USD)', 'Frequency of Purchases': 'Purchase Frequency'},
+        marginal_x='histogram', # Add marginal histograms for distribution context
+        marginal_y='histogram'
     )
-    fig3.update_layout(yaxis={'categoryorder': 'array', 'categoryarray': frequency_order})
+    # Ensure all text is readable in the dark theme
+    fig3.update_layout(
+        plot_bgcolor='rgba(0,0,0,0)', 
+        paper_bgcolor='rgba(0,0,0,0)',
+        font=dict(color='white'),
+        yaxis={'categoryorder': 'array', 'categoryarray': frequency_order, 'title': 'Purchase Frequency'},
+        xaxis={'title': 'Purchase Amount (USD)'}
+    )
+    # Add a note about the central finding (optional, based on data)
+    fig3.add_annotation(
+        text="Highest density indicates common customer behavior.", 
+        xref="paper", yref="paper",
+        x=0.5, y=-0.2, showarrow=False, font=dict(size=10, color="lightgray")
+    )
     st.plotly_chart(fig3, use_container_width=True)
 except Exception as e:
     st.error(f"Error creating chart 3: {e}")
-
+    
 # 4. Scatter Plot: Previous Purchases vs Purchase Amount
 st.header("4. Relationship: Previous Purchases vs Purchase Amount")
 try:
@@ -108,17 +123,42 @@ try:
         df, 
         x='Previous Purchases', 
         y='Purchase Amount (USD)',
-        title='Relationship: Previous Purchases vs Purchase Amount',
-        opacity=0.6,
+        title='Relationship: Previous Purchases vs Purchase Amount (with OLS Trendline)', # Updated title
+        opacity=0.4, # Decreased opacity slightly to better handle overplotting
+        render_mode='webgl', # Recommended for large datasets in Plotly
         trendline='ols', 
-        trendline_color_override='green',
-        labels={'Previous Purchases': 'Previous Purchases', 'Purchase Amount (USD)': 'Purchase Amount (USD)'}
+        trendline_color_override='#FFD700', # Change to a brighter color like gold for dark mode visibility
+        labels={'Previous Purchases': 'Previous Purchases', 'Purchase Amount (USD)': 'Purchase Amount (USD)'},
+        # Add color to the points based on a third variable (e.g., 'Gender' or 'Subscription Status') for deeper insight
+        # color='Subscription Status' 
     )
-    fig4.update_layout(xaxis_title="Previous Purchases", yaxis_title="Purchase Amount (USD)")
+    
+    fig4.update_traces(marker=dict(size=5, line=dict(width=0.5, color='DarkSlateGray'))) # Style the markers
+    
+    # Extract and display the R-squared value for the OLS trendline
+    results = px.get_trendline_results(fig4)
+    r_squared = results.iloc[0]["px_fit_results"].rsquared
+    
+    fig4.update_layout(
+        xaxis_title="Previous Purchases", 
+        yaxis_title="Purchase Amount (USD)",
+        plot_bgcolor='rgba(0,0,0,0)', 
+        paper_bgcolor='rgba(0,0,0,0)',
+        font=dict(color='white'),
+        # Annotate the R-squared value
+        annotations=[
+            dict(
+                xref='paper', yref='paper',
+                x=0.95, y=0.05,
+                text=f'R-squared: {r_squared:.3f}', # Display R-squared near the bottom right
+                showarrow=False,
+                font=dict(color='white', size=12)
+            )
+        ]
+    )
     st.plotly_chart(fig4, use_container_width=True)
 except Exception as e:
     st.error(f"Error creating chart 4: {e}")
-
 # 5. Distribution of Subscription Status
 st.header("5. Distribution of Subscription Status (Count)")
 try:
