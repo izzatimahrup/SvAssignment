@@ -24,7 +24,8 @@ def load_data(url):
 # Define the URL
 url = 'https://raw.githubusercontent.com/izzatimahrup/SvAssignment/refs/heads/main/shopping_behaviour_cleaned.csv'
 
-
+# Load the data into df
+df = load_data(url)
 
 # --- Plotly Visualizations ---
 
