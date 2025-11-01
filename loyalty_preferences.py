@@ -92,25 +92,13 @@ try:
         df, 
         x='Purchase Amount (USD)', 
         y='Frequency of Purchases',
-        title='Density Heatmap: Purchase Frequency vs Purchase Amount (Customer Count)', # Make title more descriptive
-        color_continuous_scale="Plasma", # Change to 'Plasma' or 'Inferno' for better contrast in dark mode
-        labels={'Purchase Amount (USD)': 'Purchase Amount (USD)', 'Frequency of Purchases': 'Purchase Frequency'},
-        marginal_x='histogram', # Add marginal histograms for distribution context
-        marginal_y='histogram'
+        title='Density Heatmap: Purchase Frequency vs Purchase Amount',
+        color_continuous_scale="YlOrRd",  # Yellow-Orange-Red scale
+        labels={'Purchase Amount (USD)': 'Purchase Amount (USD)', 'Frequency of Purchases': 'Purchase Frequency'}
     )
-    # Ensure all text is readable in the dark theme
     fig3.update_layout(
-        plot_bgcolor='rgba(0,0,0,0)', 
-        paper_bgcolor='rgba(0,0,0,0)',
-        font=dict(color='white'),
-        yaxis={'categoryorder': 'array', 'categoryarray': frequency_order, 'title': 'Purchase Frequency'},
-        xaxis={'title': 'Purchase Amount (USD)'}
-    )
-    # Add a note about the central finding (optional, based on data)
-    fig3.add_annotation(
-        text="Highest density indicates common customer behavior.", 
-        xref="paper", yref="paper",
-        x=0.5, y=-0.2, showarrow=False, font=dict(size=10, color="lightgray")
+        yaxis={'categoryorder': 'array', 'categoryarray': frequency_order},
+        coloraxis_colorbar=dict(title="Density")
     )
     st.plotly_chart(fig3, use_container_width=True)
 except Exception as e:
