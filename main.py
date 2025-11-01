@@ -8,25 +8,25 @@ st.set_page_config(
 
 # --- Define Pages with Navigation ---
 
-# Home page
+# Home page (🏠: House/Home is universally recognized)
 home = st.Page('home.py', title='HomePage', default=True, icon='🏠')
 
 # Page for Objective 1: Demographic Analysis
-visualise_demographics = st.Page('shopping_behaviour.py', title='Demographic Analysis', icon='📊')
+# 👤: Bust/Silhouette is great for people/demographics.
+visualise_demographics = st.Page('shopping_behaviour.py', title='Demographic Analysis', icon='👤')
 
 # NEW PAGE 1 for Objective 2: Seasonality and Discounts
-# Using relevant icon: ❄️ (for Seasonality) or 🏷️ (for Discounts)
+# 🏷️: Tag is perfect for 'Discounts'.
 visualise_seasonality = st.Page('seasonality_discounts.py', title='Season & Discount Analysis', icon='🏷️')
 
 # NEW PAGE 2 for Objective 3: Loyalty and Preferences
-# Using relevant icon: 💖 (for Loyalty) or 🛍️ (for Shopping/Preferences)
-visualise_loyalty = st.Page('loyalty_preferences.py', title='Loyalty & Preferences', icon='💖')
+# 👑: Crown/Gold Medal suggests 'Loyalty' or 'Premium status'.
+visualise_loyalty = st.Page('loyalty_preferences.py', title='Loyalty & Preferences', icon='👑')
 
 # --- Create a Navigation Structure ---
 
 pg = st.navigation(
     {
-        # Add all pages to the "Menu" section
         "Menu": [home, visualise_demographics, visualise_seasonality, visualise_loyalty]
     }
 )
