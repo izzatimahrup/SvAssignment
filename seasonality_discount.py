@@ -25,13 +25,6 @@ try:
     df['Subscription Status'] = df['Subscription Status'].map({1: 'Subscribed', 0: 'Non-Subscribed'})
     df['Discount Applied'] = df['Discount Applied'].map({1: 'Discount Applied', 0: 'No Discount'})
 
-    print("Data loaded and processed successfully. Displaying first 5 rows:")
-    # Use display(df.head()) if running in Jupyter/Colab
-    # If running in a standard environment, use print(df.head().to_markdown(index=False))
-    display(df.head())
-
-except Exception as e:
-    print(f"An error occurred while reading the CSV from the URL: {e}")
 
 
 # --- Interactive Plotly Visualizations ---
