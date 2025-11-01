@@ -36,7 +36,10 @@ df = load_data(url)
 # --- Plotly Visualizations ---
 
 st.header("📊 Visualizations of Objectives 1")
-st.markdown("1.	To examine how key demographic factors like age, gender, and location influence consumer spending patterns and shopping frequency. By analyzing these variables, the study seeks to identify differences in purchasing behavior across various demographic groups.")
+st.markdown("To examine how key demographic factors like age, gender, and location influence consumer spending patterns and shopping frequency. By analyzing these variables, the study seeks to identify differences in purchasing behavior across various demographic groups.")
+
+st.header("🔎 Summary")
+st.markdown("The visualizations explore how age and gender influence consumer spending and shopping frequency. The box plot shows a higher purchase amount in older age groups, particularly those aged 36-45 and above. The bar chart comparing gender vs purchase amount reveals that males tend to spend slightly more than females on average. The purchase frequency vs gender stacked bar chart shows that both male and female shoppers exhibit similar frequencies of purchases, although there are slight variations in product category preferences. These findings indicate that age and gender both play a role in shaping consumer spending behavior, with older individuals and males spending more, but frequency remains consistent across gender.")
 
 # Define the Age Group order for consistent plotting
 age_order = ['18–25', '26–35', '36–45', '46–55', '56–65', '65+']
