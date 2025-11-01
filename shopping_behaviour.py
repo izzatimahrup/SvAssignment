@@ -5,8 +5,8 @@ import plotly.graph_objects as go
 
 # --- Configuration and Data Loading ---
 st.set_page_config(layout="wide")
-st.title("🛒  Shopping Behavior Analysis")
-st.markdown("An interactive analysis of customer shopping data using Streamlit and **Plotly**.")
+st.title("👤  Demographic Analysis")
+st.markdown("---")
 
 # 1. Cached Data Loading Function
 @st.cache_data
@@ -30,7 +30,7 @@ df = load_data(url)
 # --- Plotly Visualizations ---
 
 st.header("📊 Visualizations of Objectives 1")
-st.markdown("---")
+st.markdown("1.	To examine how key demographic factors like age, gender, and location influence consumer spending patterns and shopping frequency. By analyzing these variables, the study seeks to identify differences in purchasing behavior across various demographic groups.")
 
 # Define the Age Group order for consistent plotting
 age_order = ['18–25', '26–35', '36–45', '46–55', '56–65', '65+']
