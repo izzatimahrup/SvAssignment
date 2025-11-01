@@ -1,33 +1,42 @@
 import streamlit as st
 import pandas as pd
 
-# Add a banner image at the top
-banner_image = 'https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/main/3u1i.jpeg'
-st.image(banner_image, use_container_width=True)
+# Title of the app
+st.title("🛍️ Consumer Shopping Behavior Analysis")
 
-# Add the main introduction paragraph
+# Main Introduction Paragraph
 st.write(
     """
-    *Shopping Behavior Analysis* is a critical area for understanding consumer patterns and preferences. By analyzing shopping behavior, businesses can optimize product offerings, personalize marketing strategies, and improve customer satisfaction. 
-    In this analysis, we explore various factors influencing shopping behavior, such as demographics, purchase frequency, and product categories.
+    **Shopping Behavior Analysis** is a critical area for understanding consumer patterns and preferences. 🛒 By analyzing shopping behavior, businesses can optimize product offerings, personalize marketing strategies, and improve customer satisfaction. 💡
+    This analysis explores various factors influencing shopping behavior, including **demographics**, **purchase frequency**, and **product categories**. With this information, businesses can tailor their approach to meet customer needs and enhance the shopping experience.
     """
 )
 
-banner_image = 'https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/main/3u1i_2.jpeg'
-st.image(banner_image, use_container_width=True)
+# Project description
+st.markdown("""
+This app visualizes and analyzes customer shopping behavior based on demographic data, seasonal trends, and product preferences. 
+Use it to uncover insights into purchasing patterns and consumer habits. 📊
+""")
+
+# Dataset Information
+st.subheader("📦 Dataset Information")
+
+st.markdown("""
+The **Shopping Behaviour Dataset** is sourced from **Kaggle**, contributed by **Zubaira Maimona**, and was last updated two months ago. 📅 This dataset provides a comprehensive view of **consumer behavior** and **shopping patterns** across various **demographics**, **locations**, and **product categories** in the e-commerce sector. 🌍🛍️ It contains **3,900 customer records** and **18 attributes**, including key variables like **age**, **gender**, **location**, **purchase amount**, **payment method**, **product categories**, **seasonality**, and **promo code usage**. These attributes offer detailed insights into purchase details, shopping habits, and customer feedback, making it ideal for analyzing **consumer preferences** and **behaviours**.
+""")
 
 # Update objectives
-st.write("### Objectives of the Analysis")
+st.write("### 🎯 Objectives of the Analysis")
 st.write(
     """
-    - **Objective 1**: To analyze how various demographic factors influence customer shopping behavior.
-    - **Objective 2**: To investigate how seasonality and discount application influence consumer purchase frequency and amount.
-    - **Objective 3**: To explore the influence of product preferences and customer loyalty on purchase behavior.
+    - **Objective 1**: To analyze the impact of demographic factors such as age, gender, and location on consumer shopping behavior, focusing on how these attributes influence purchase amounts and shopping frequency.
+    - **Objective 2**: To investigate the effects of seasonality and discount applications on consumer purchasing behavior, examining how these factors alter purchase frequency and spending patterns across different periods.
+    - **Objective 3**: To explore how product preferences and customer loyalty, including factors like previous purchases and subscription status, shape consumer purchasing decisions and overall buying behavior.
     """
 )
 
 # Dataset context and glossary
-st.write("### Dataset Context")
+st.write("### 📝 Dataset Context")
 st.write(
     """
     This dataset provides detailed insights into consumer behaviour and shopping patterns across various demographics, locations, and product categories. It contains 3,900 customer records with 18 attributes that describe purchase details, shopping habits, and preferences.
@@ -47,13 +56,11 @@ st.write(
     - Which product categories and colors are most popular in different seasons.
     - Patterns in payment method usage (e.g., PayPal vs. Credit Card).
     - How subscription and loyalty behaviours affect shopping frequency.
-    
-    Researchers, data analysts, and students can use this dataset to practice customer segmentation, predictive modelling, recommendation systems, and market basket analysis. It also serves as a valuable resource for learning techniques in exploratory data analysis (EDA), machine learning, and business analytics.
     """
 )
 
 # Dataset Glossary: Column-wise
-st.write("### Dataset Glossary (Column-wise) 📝")
+st.write("### 📝 Dataset Glossary (Column-wise)")
 
 # Define the dataset columns, descriptions, and data types
 column_info = {
@@ -84,24 +91,24 @@ column_info = {
         "The frequency of purchases made by the customer, helping assess loyalty (e.g., 'Weekly', 'Quarterly')."
     ],
     "Data Type": [
-        "Numerical (Identifier)", 
-        "Numerical", 
-        "Categorical", 
-        "Categorical", 
-        "Categorical", 
-        "Numerical", 
-        "Categorical", 
-        "Categorical", 
-        "Categorical", 
-        "Categorical", 
-        "Numerical", 
-        "Categorical (Binary)", 
-        "Categorical", 
-        "Categorical (Binary)", 
-        "Categorical (Binary)", 
-        "Numerical", 
-        "Categorical", 
-        "Categorical"
+        "Quantitative (Identifier)", 
+        "Quantitative", 
+        "Qualitative", 
+        "Qualitative", 
+        "Qualitative", 
+        "Quantitative", 
+        "Qualitative", 
+        "Qualitative", 
+        "Qualitative", 
+        "Qualitative", 
+        "Quantitative", 
+        "Qualitative", 
+        "Qualitative", 
+        "Qualitative", 
+        "Qualitative", 
+        "Quantitative", 
+        "Qualitative", 
+        "Qualitative"
     ]
 }
 
