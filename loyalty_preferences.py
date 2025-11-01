@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 # Page configuration
 st.set_page_config(layout="wide")
 st.title("👑 Loyalty & Preferences Analysis")
-st.markdown("This analysis explores customer loyalty and preference patterns, revealing key behavioral differences between subscribers and non-subscribers. Subscribers exhibit a significantly higher volume of purchases across nearly all frequency categories compared to non-subscribers, confirming that subscription status is a strong indicator of loyalty and engagement. Furthermore, while most shoppers tend to make purchases within a consistent mid-range of monetary value, the density heatmap indicates a positive relationship between purchase frequency and amount, where more frequent buyers also tend to be higher spenders. Previous Purchase history shows a weaker direct correlation with current Purchase Amount, suggesting that while frequency drives high spending, the sheer number of past transactions does not directly predict the value of the next purchase.")
+st.markdown("This section examines how product preferences and customer loyalty influence consumer purchasing decisions, highlighting the role of previous purchases and subscription status.")
 
 # --- Configuration and Data Loading ---
 
@@ -47,7 +47,7 @@ st.header("📊 Visualizations of Objectives 3")
 st.markdown("To explores how product preferences, such as item category and color, alongside customer loyalty factors like subscriptions and previous purchases, affect consumer decision-making. It aims to understand how loyalty and product choices influence overall purchase frequency and amounts spent.")
 
 st.header("🔎 Summary")
-st.markdown("")
+st.markdown("This analysis explores customer loyalty and preference patterns. Subscribers show significantly higher purchase volume across all frequency categories, confirming that subscription status is a strong loyalty indicator. The data also reveals a positive correlation between purchase frequency and amount, meaning customers who shop more often tend to spend more per transaction. Conversely, the sheer number of previous purchases has a weaker direct correlation with the current purchase amount.")
 
 # Define the Age Group order for consistent plotting
 
