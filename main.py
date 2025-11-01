@@ -7,7 +7,7 @@ st.set_page_config(
 )
 
 # Define pages with navigation
-visualise = st.Page('shopping_behaviour.py', title='Shopping Behaviour Visualization', icon=':bar_chart:')
+visualise = st.Page('shopping_behaviour.py', title='Shopping Behaviour Visualization', icon='📊')
 home = st.Page('home.py', title='HomePage', default=True, icon=':house:')
 
 # Create a navigation structure
