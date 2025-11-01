@@ -1,148 +1,85 @@
+import streamlit as st
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
-import numpy as np
+import plotly.graph_objects as go # Retained for completeness
 
+st.set_page_config(layout="wide")
+st.title("🏷️ Season & Discount Analysis")
+st.markdown("This section explores the influence of **Seasonality** and **Discount Application** on purchase behavior.")
 
 # --- Configuration and Data Loading ---
 
-url = 'https://raw.githubusercontent.com/izzatimahrup/SvAssignment/refs/heads/main/shopping_behaviour_cleaned.csv'
-df = pd.DataFrame() # Initialize empty DataFrame
+@st.cache_data
+def load_and_process_data_seasonality():
+    """Loads data from URL, processes columns, and prepares DataFrame."""
+    url = 'https://raw.githubusercontent.com/izzatimahrup/SvAssignment/refs/heads/main/shopping_behaviour_cleaned.csv'
+    
+    try:
+        df = pd.read_csv(url)
+        df.columns = ["Customer ID", "Age", "Gender", "Item Purchased", "Category", "Purchase Amount (USD)", "Location", "Size", "Color", "Season", "Review Rating", "Subscription Status", "Shipping Type", "Discount Applied", "Promo Code Used", "Previous Purchases", "Payment Method", "Frequency of Purchases"]
+        
+        # Data Transformation
+        df['Gender'] = df['Gender'].map({1: 'Male', 0: 'Female'})
+        df['Subscription Status'] = df['Subscription Status'].map({1: 'Subscribed', 0: 'Non-Subscribed'})
+        df['Discount Applied'] = df['Discount Applied'].map({1: 'Discount Applied', 0: 'No Discount'})
+        
+        return df
+    
+    except Exception as e:
+        st.error(f"Error loading data: {e}")
+        return pd.DataFrame()
 
-try:
-    # 1. Load the data
-    df = pd.read_csv(url)
+df = load_and_process_data_seasonality()
 
+if df.empty:
+    st.stop()
 
+# --- Streamlit Page Content ---
 
-    # 3. Create the 'Age Group' column (Necessary for the visualizations)
-    bins = [18, 26, 36, 46, 56, 66, 100]
-    labels = ['18–25', '26–35', '36–45', '46–55', '56–65', '65+']
-    df['Age Group'] = pd.cut(df['Age'], bins=bins, labels=labels, right=False)
-
-    # 4. Map numerical codes to string labels for plotting (necessary for Plotly)
-    df['Gender'] = df['Gender'].map({1: 'Male', 0: 'Female'})
-    df['Subscription Status'] = df['Subscription Status'].map({1: 'Subscribed', 0: 'Non-Subscribed'})
-    df['Discount Applied'] = df['Discount Applied'].map({1: 'Discount Applied', 0: 'No Discount'})
-
-
-
-# --- Interactive Plotly Visualizations ---
-
-if not df.empty:
-    age_order = ['18–25', '26–35', '36–45', '46–55', '56–65', '65+']
-    gender_colors = {'Male': '#1f77b4', 'Female': '#ff7f0e'}
-    discount_map = {'Discount Applied': '#1f77b4', 'No Discount': '#ff7f0e'}
-
-
-    # 1. Box Plot for Age Group vs Purchase Amount
-    fig1 = px.box(
-        df,
-        x='Age Group',
-        y='Purchase Amount (USD)',
-        category_orders={"Age Group": age_order},
-        title='1. Purchase Amount Distribution by Age Group (Interactive)',
-        color='Age Group'
-    )
-    fig1.update_layout(xaxis={'categoryorder': 'array', 'categoryarray': age_order})
-    fig1.show()
+discount_map = {'Discount Applied': '#1f77b4', 'No Discount': '#ff7f0e'}
+season_order = ["Winter", "Spring", "Summer", "Fall"]
 
 
-    # 2. Bar Chart of Gender vs Purchase Amount (Aggregated)
-    average_purchase_by_gender = df.groupby('Gender')['Purchase Amount (USD)'].mean().reset_index().round(2)
-    fig2 = px.bar(
-        average_purchase_by_gender,
-        x='Gender',
-        y='Purchase Amount (USD)',
-        color='Gender',
-        color_discrete_map=gender_colors,
-        text='Purchase Amount (USD)',
-        title='2. Average Purchase Amount by Gender (Interactive)'
-    )
-    fig2.update_traces(textposition='outside')
-    fig2.show()
+st.header("1. Discount Usage Distribution")
+discount_counts = df['Discount Applied'].value_counts().reset_index()
+discount_counts.columns = ['Discount Applied', 'Count']
+fig1 = px.pie(discount_counts, names='Discount Applied', values='Count',
+              title='Proportion of Purchases with Discount Applied', hole=0.4,
+              color='Discount Applied', color_discrete_map=discount_map)
+fig1.update_traces(textposition='inside', textinfo='percent+label')
+st.plotly_chart(fig1, use_container_width=True) # CORRECTED
 
 
-    # 3. Stacked Bar Chart of Purchase Frequency vs Gender (Horizontal Stacked)
-    gender_frequency_counts = df.groupby(['Frequency of Purchases', 'Gender'], observed=False).size().reset_index(name='Count')
-    fig3 = px.bar(
-        gender_frequency_counts,
-        y='Frequency of Purchases',
-        x='Count',
-        color='Gender',
-        orientation='h',
-        title='3. Purchase Frequency vs Gender (Interactive)',
-        color_discrete_map=gender_colors
-    )
-    fig3.show()
+st.header("2. Purchase Amount Distribution by Season")
+fig2 = px.violin(df, x='Season', y='Purchase Amount (USD)',
+                 color='Season', box=True, points='outliers',
+                 title='Purchase Amount Distribution by Season',
+                 color_discrete_sequence=px.colors.sequential.Agsunset,
+                 category_orders={"Season": season_order})
+st.plotly_chart(fig2, use_container_width=True) # CORRECTED
 
 
-    # 4. Stacked Bar Chart for Gender vs Subscription
-    gender_subscription_counts = df.groupby(['Gender', 'Subscription Status'], observed=False).size().reset_index(name='Count')
-    fig4 = px.bar(
-        gender_subscription_counts,
-        x='Gender',
-        y='Count',
-        color='Subscription Status',
-        title='4. Gender vs Subscription Status (Interactive)',
-        color_discrete_map={'Subscribed': '#1f77b4', 'Non-Subscribed': '#ff7f0e'}
-    )
-    fig4.show()
+st.header("3. Seasonal Discount Usage (Count)")
+season_discount_counts = df.groupby(['Season', 'Discount Applied'], observed=False).size().reset_index(name='Count')
+fig3 = px.bar(season_discount_counts, x='Season', y='Count',
+              color='Discount Applied', title='Discount Application Count by Season',
+              color_discrete_map=discount_map,
+              category_orders={"Season": season_order})
+st.plotly_chart(fig3, use_container_width=True) # CORRECTED
 
 
-    # 5. Grouped Bar Chart of Age Group vs Category
-    fig5 = px.histogram(
-        df,
-        x='Age Group',
-        color='Category',
-        category_orders={"Age Group": age_order},
-        barmode='group',
-        title='5. Category Distribution by Age Group (Interactive)'
-    )
-    fig5.update_layout(xaxis={'categoryorder': 'array', 'categoryarray': age_order})
-    fig5.show()
+st.header("4. Product Category Popularity by Season (Count)")
+fig4 = px.histogram(df, x='Season', color='Category',
+                    title='Product Category Counts by Season', barmode='group',
+                    category_orders={"Season": season_order})
+st.plotly_chart(fig4, use_container_width=True) # CORRECTED
 
 
-    # 6. Donut Chart of Discount Applications
-    discount_counts = df['Discount Applied'].value_counts().reset_index()
-    discount_counts.columns = ['Discount Applied', 'Count']
-    fig6 = px.pie(
-        discount_counts,
-        names='Discount Applied',
-        values='Count',
-        title='6. Discount Application Distribution (Interactive)',
-        hole=0.3, # Creates the donut shape
-        color='Discount Applied',
-        color_discrete_map=discount_map
-    )
-    fig6.show()
-
-
-    # 7. Line Chart for Purchase Amount (using histogram to get binned data)
-    fig7 = px.histogram(
-        df,
-        x='Purchase Amount (USD)',
-        nbins=10,
-        title='7. Distribution of Purchase Amount (Binned) (Interactive)',
-        color_discrete_sequence=['#1f77b4']
-    )
-    # Update traces to show as a smooth line/area instead of bars
-    fig7.update_traces(kind='area', line={'shape': 'spline', 'width': 2})
-    fig7.update_xaxes(title_text='Purchase Amount (USD) Bins')
-    fig7.update_yaxes(title_text='Count')
-    fig7.show()
-
-
-    # 8. Bar Chart for Purchase Frequency
-    purchase_frequency_counts = df['Frequency of Purchases'].value_counts().reset_index()
-    purchase_frequency_counts.columns = ['Frequency of Purchases', 'Count']
-    fig8 = px.bar(
-        purchase_frequency_counts,
-        x='Frequency of Purchases',
-        y='Count',
-        color='Frequency of Purchases',
-        text='Count',
-        title='8. Purchase Frequency Distribution (Interactive)'
-    )
-    fig8.update_traces(textposition='outside')
-    fig8.show()
+st.header("5. Average Purchase Amount with/without Discount")
+avg_purchase_discount = df.groupby('Discount Applied')['Purchase Amount (USD)'].mean().reset_index().round(2)
+fig5 = px.bar(avg_purchase_discount, x='Discount Applied', y='Purchase Amount (USD)',
+              color='Discount Applied', text='Purchase Amount (USD)',
+              title='Average Purchase Amount by Discount Status', color_discrete_map=discount_map)
+fig5.update_traces(textposition='outside')
+fig5.update_layout(yaxis_title="Average Purchase Amount (USD)")
+st.plotly_chart(fig5, use_container_width=True) # CORRECTED
