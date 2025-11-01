@@ -11,20 +11,19 @@ st.markdown("This section explores the influence of **Product Preferences** and 
 
 @st.cache_data
 def load_and_process_data_loyalty():
-    url = 'https://raw.githubusercontent.com/izzatimahrup/SvAssignment/refs/heads/main/shopping_behaviour_cleaned.csv'
-    try:
-        df = pd.read_csv(url)
-
-        
-        # Data Transformation
-        df['Gender'] = df['Gender'].map({1: 'Male', 0: 'Female'})
-        df['Subscription Status'] = df['Subscription Status'].map({1: 'Subscribed', 0: 'Non-Subscribed'})
-        df['Discount Applied'] = df['Discount Applied'].map({1: 'Discount Applied', 0: 'No Discount'})
-        
-        return df
-    except Exception as e:
-        st.error(f"Error loading data: {e}")
-        return pd.DataFrame()
+    url = 'https://raw.githubusercontent.com/izzatimahrup/SvAssignment/refs/heads/main/shopping_behaviour_cleaned.csv'
+    try:
+        df = pd.read_csv(url)
+        
+        # Data Transformation
+        df['Gender'] = df['Gender'].map({1: 'Male', 0: 'Female'})
+        df['Subscription Status'] = df['Subscription Status'].map({1: 'Subscribed', 0: 'Non-Subscribed'})
+        df['Discount Applied'] = df['Discount Applied'].map({1: 'Discount Applied', 0: 'No Discount'})
+        
+        return df
+    except Exception as e:
+        st.error(f"Error loading data: {e}")
+        return pd.DataFrame()
 
 df = load_and_process_data_loyalty()
 
