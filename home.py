@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # Add a banner image at the top
-banner_image = 'https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/main/3u1i.jpeg' 
+banner_image = 'https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/main/3u1i.jpeg'
 st.image(banner_image, use_container_width=True)
 
 # Add the main introduction paragraph
@@ -13,7 +13,7 @@ st.write(
     """
 )
 
-banner_image = 'https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/main/3u1i_2.jpeg' 
+banner_image = 'https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/main/3u1i_2.jpeg'
 st.image(banner_image, use_container_width=True)
 
 # Update objectives
@@ -34,11 +34,11 @@ st.write(
     
     The dataset includes information such as:
     
-    - **Customer demographics** (age, gender, location)
-    - **Product details** (item purchased, category, size, color, season)
-    - **Purchase information** (amount spent in USD, payment method, shipping type)
-    - **Shopping behaviour** (frequency of purchases, previous purchases, subscription status, discount usage, promo codes)
-    - **Customer feedback** (review ratings)
+    - **Customer demographics** (Age, Gender, Location)
+    - **Product details** (Item Purchased, Category, Size, Color, Season)
+    - **Purchase information** (Purchase Amount (USD), Payment Method, Shipping Type)
+    - **Shopping behaviour** (Frequency of Purchases, Previous Purchases, Subscription Status, Discount Applied, Promo Code Used)
+    - **Customer feedback** (Review Rating)
     
     This dataset can be used to explore consumer decision-making and market trends, including:
     
@@ -53,13 +53,17 @@ st.write(
 )
 
 # Dataset Glossary: Column-wise
-st.write("### Dataset Glossary (Column-wise)")
+st.write("### Dataset Glossary (Column-wise) 📝")
 
 # Define the dataset columns, descriptions, and data types
+# FIX 1 & 2: Updated Column Names and Data Types based on your request.
 column_info = {
-    "Column Name": ["customer_id", "age", "gender", "item_purchased", "category", "purchase_amount_usd", "location", 
-                    "size", "color", "season", "review_rating", "subscription_status", "shipping_type", 
-                    "discount_applied", "promo_code_used", "previous_purchases", "payment_method", "frequency_of_purchases"],
+    "Column Name": [
+        "Customer ID", "Age", "Gender", "Item Purchased", "Category", "Purchase Amount (USD)",
+        "Location", "Size", "Color", "Season", "Review Rating", "Subscription Status",
+        "Shipping Type", "Discount Applied", "Promo Code Used", "Previous Purchases",
+        "Payment Method", "Frequency of Purchases"
+    ],
     "Description": [
         "A unique identifier assigned to each customer. Helps distinguish shoppers.",
         "The age of the customer in years, useful for analyzing generational shopping habits.",
@@ -72,16 +76,35 @@ column_info = {
         "The chosen color of the item. Reveals color preferences and trends.",
         "The season (Winter, Spring, etc.) when the purchase was made.",
         "A numerical rating reflecting the customer’s satisfaction with the product.",
-        "Indicates whether the customer has an active subscription with the store.",
+        "Indicates whether the customer has an active subscription with the store ('Yes'/'No').",
         "The type of delivery chosen, such as free shipping or express.",
-        "Indicates whether a discount was applied during the purchase.",
-        "Shows whether the customer used a promotional code.",
+        "Indicates whether a discount was applied during the purchase ('Yes'/'No').",
+        "Shows whether the customer used a promotional code ('Yes'/'No').",
         "The number of items the customer has previously bought, reflecting loyalty.",
         "The payment method used (Credit Card, PayPal, etc.). Indicates financial behaviour.",
-        "The frequency of purchases made by the customer, helping assess loyalty."
+        "The frequency of purchases made by the customer, helping assess loyalty (e.g., 'Weekly', 'Quarterly')."
     ],
-    "Data Type": ["Integer", "Integer", "String", "String", "String", "Float", "String", "String", "String", "String", "Float", "String", 
-                  "String", "Boolean", "Boolean", "Integer", "String", "Integer"]
+    # Data Type fixed to "Numerical" or "Categorical" as requested
+    "Data Type": [
+        "Numerical (Identifier)", 
+        "Numerical", 
+        "Categorical", 
+        "Categorical", 
+        "Categorical", 
+        "Numerical", 
+        "Categorical", 
+        "Categorical", 
+        "Categorical", 
+        "Categorical", 
+        "Numerical", 
+        "Categorical (Binary)", 
+        "Categorical", 
+        "Categorical (Binary)", 
+        "Categorical (Binary)", 
+        "Numerical", 
+        "Categorical", 
+        "Categorical"
+    ]
 }
 
 # Create a DataFrame
