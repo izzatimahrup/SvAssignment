@@ -17,7 +17,7 @@ visualise_demographics = st.Page('shopping_behaviour.py', title='Demographic Ana
 
 # NEW PAGE 1 for Objective 2: Seasonality and Discounts
 # 🏷️: Tag is perfect for 'Discounts'.
-visualise_seasonality = st.Page('seasonality_discounts.py', title='Season & Discount Analysis', icon='🏷️')
+visualise_seasonality = st.Page('seasonality_discount.py', title='Season & Discount Analysis', icon='🏷️')
 
 # NEW PAGE 2 for Objective 3: Loyalty and Preferences
 # 👑: Crown/Gold Medal suggests 'Loyalty' or 'Premium status'.
