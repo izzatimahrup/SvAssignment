@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 
 # --- Configuration and Data Loading ---
 st.set_page_config(layout="wide")
-st.title("👤  Demographic Analysis")
+st.title("👤 Demographic Analysis")
 st.markdown("---")
 
 # 1. Cached Data Loading Function
@@ -16,6 +16,12 @@ def load_data(url):
         df = pd.read_csv(url)
         # Convert Gender to string for better categorical plotting
         df['Gender'] = df['Gender'].map({1: 'Male', 0: 'Female'})
+        
+        # --- MODIFICATION START ---
+        # Convert Subscription Status to string (1: 'Yes', 0: 'No') as requested
+        df['Subscription Status'] = df['Subscription Status'].map({1: 'Yes', 0: 'No'})
+        # --- MODIFICATION END ---
+        
         return df
     except Exception as e:
         st.error(f"An error occurred while reading the CSV from the URL: {e}")
@@ -96,7 +102,8 @@ fig4 = px.bar(
     color='Subscription Status',
     title='Gender vs Subscription Status',
     labels={'Subscription Status': 'Subscription Status'},
-    color_discrete_map={0: 'lightcoral', 1: 'mediumseagreen'} # Custom colors for status
+    # Updated color map keys to match the new string values ('No' and 'Yes')
+    color_discrete_map={'No': 'lightcoral', 'Yes': 'mediumseagreen'} 
 )
 st.plotly_chart(fig4, use_container_width=True)
 
