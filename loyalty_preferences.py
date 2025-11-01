@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 # Page configuration
 st.set_page_config(layout="wide")
 st.title("👑 Loyalty & Preferences Analysis")
-st.markdown("This section visualize how product preferences and customer loyalty influence consumer purchasing decisions, highlighting the role of previous purchases and subscription status.")
+st.markdown("This analysis explores customer loyalty and preference patterns, revealing key behavioral differences between subscribers and non-subscribers. Subscribers exhibit a significantly higher volume of purchases across nearly all frequency categories compared to non-subscribers, confirming that subscription status is a strong indicator of loyalty and engagement. Furthermore, while most shoppers tend to make purchases within a consistent mid-range of monetary value, the density heatmap indicates a positive relationship between purchase frequency and amount, where more frequent buyers also tend to be higher spenders. Previous Purchase history shows a weaker direct correlation with current Purchase Amount, suggesting that while frequency drives high spending, the sheer number of past transactions does not directly predict the value of the next purchase.")
 
 # --- Configuration and Data Loading ---
 
