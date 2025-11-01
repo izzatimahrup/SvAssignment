@@ -50,8 +50,6 @@ df = load_data(url)
 st.header("📊 Visualizations of Objectives 1")
 st.markdown("1.	To examine how key demographic factors like age, gender, and location influence consumer spending patterns and shopping frequency. By analyzing these variables, the study seeks to identify differences in purchasing behavior across various demographic groups.")
 
-# Define the Age Group order for consistent plotting
-age_order = ['18–25', '26–35', '36–45', '46–55', '56–65', '65+']
 
 # 1. Box Plot for Age Group vs Purchase Amount (Interactive)
 st.subheader("1. Purchase Amount Distribution by Age Group")
