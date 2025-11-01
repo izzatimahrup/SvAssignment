@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 # --- Configuration and Data Loading ---
 st.set_page_config(layout="wide")
 st.title("👤 Demographic Analysis")
-st.markdown("---")
+st.markdown("This section examines how demographic factors, such as age and gender, affect consumer shopping behavior, including purchase amounts and shopping frequency")
 
 # 1. Cached Data Loading Function
 @st.cache_data
