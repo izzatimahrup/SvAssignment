@@ -14,12 +14,30 @@ def load_data(url):
     """Loads the shopping behavior data from a URL into a DataFrame."""
     try:
         df = pd.read_csv(url)
-        # Convert Gender to string for better categorical plotting
+        # 2. Create Age Group
+        bins = [18, 26, 36, 46, 56, 66, 100]
+        labels = ['18–25', '26–35', '36–45', '46–55', '56–65', '65+']
+        df['Age Group'] = pd.cut(df['Age'], bins=bins, labels=labels, right=False)
+
+        # 3. Map numerical codes to descriptive strings
+        # Gender
         df['Gender'] = df['Gender'].map({1: 'Male', 0: 'Female'})
+        
+        # Subscription Status (Addresses the user's request to handle this column)
+        df['Subscription Status'] = df['Subscription Status'].map({1: 'Subscribed', 0: 'Non-Subscribed'})
+        
+        # Binary variables
+        df['Discount Applied'] = df['Discount Applied'].map({1: 'Yes', 0: 'No'})
+        df['Promo Code Used'] = df['Promo Code Used'].map({1: 'Yes', 0: 'No'})
+
         return df
-    except Exception as e:
-        st.error(f"An error occurred while reading the CSV from the URL: {e}")
+    except KeyError as e:
+        # Catch errors if one of the expected column names is missing
+        st.error(f"Data Processing Error: A required column was not found. Please verify the CSV header structure. Missing column: {e}")
         return pd.DataFrame()
+    except Exception as e:
+        st.error(f"An error occurred while loading or processing the data: {e}")
+        return pd.DataFrame())
 
 # Define the URL
 url = 'https://raw.githubusercontent.com/izzatimahrup/SvAssignment/refs/heads/main/shopping_behaviour_cleaned.csv'
