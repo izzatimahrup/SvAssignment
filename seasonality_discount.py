@@ -16,7 +16,6 @@ def load_and_process_data_seasonality():
     
     try:
         df = pd.read_csv(url)
-        df.columns = ["Customer ID", "Age", "Gender", "Item Purchased", "Category", "Purchase Amount (USD)", "Location", "Size", "Color", "Season", "Review Rating", "Subscription Status", "Shipping Type", "Discount Applied", "Promo Code Used", "Previous Purchases", "Payment Method", "Frequency of Purchases"]
         
         # Data Transformation
         df['Gender'] = df['Gender'].map({1: 'Male', 0: 'Female'})
