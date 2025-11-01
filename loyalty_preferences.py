@@ -43,8 +43,8 @@ if df.empty:
 frequency_order = ['Annually', 'Quarterly', 'Monthly', 'Fortnightly', 'Weekly', 'Daily']
 
 # --- Plotly Visualizations ---
-st.header("📊 Visualizations of Objectives 2")
-st.markdown("3.	To explores how product preferences, such as item category and color, alongside customer loyalty factors like subscriptions and previous purchases, affect consumer decision-making. It aims to understand how loyalty and product choices influence overall purchase frequency and amounts spent.")
+st.header("📊 Visualizations of Objectives 3")
+st.markdown("To explores how product preferences, such as item category and color, alongside customer loyalty factors like subscriptions and previous purchases, affect consumer decision-making. It aims to understand how loyalty and product choices influence overall purchase frequency and amounts spent.")
 
 st.header("🔎 Summary")
 st.markdown("")
