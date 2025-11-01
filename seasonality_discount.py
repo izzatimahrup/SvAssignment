@@ -5,7 +5,7 @@ import plotly.graph_objects as go # Retained for completeness
 
 st.set_page_config(layout="wide")
 st.title("🏷️ Season & Discount Analysis")
-st.markdown("This section explores the influence of **Seasonality** and **Discount Application** on purchase behavior.")
+st.markdown("This section investigates how seasonality and the use of discounts impact consumer purchasing behavior, focusing on purchase frequency and spending patterns across different seasons.")
 
 # --- Configuration and Data Loading ---
 
@@ -32,6 +32,14 @@ df = load_and_process_data_seasonality()
 
 if df.empty:
     st.stop()
+
+# --- Plotly Visualizations ---
+
+st.header("📊 Visualizations of Objectives 1")
+st.markdown("2.	To investigate how seasonal trends and the use of discount impact consumer purchasing behavior, particularly in terms of how often purchases are made and how much is spent. The analysis will look into how discounts and seasonal changes drive consumer decisions and spending habits.")
+
+st.header("🔎 Summary")
+st.markdown("")
 
 # --- Streamlit Page Content ---
 
