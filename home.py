@@ -56,7 +56,6 @@ st.write(
 st.write("### Dataset Glossary (Column-wise) 📝")
 
 # Define the dataset columns, descriptions, and data types
-# FIX 1 & 2: Updated Column Names and Data Types based on your request.
 column_info = {
     "Column Name": [
         "Customer ID", "Age", "Gender", "Item Purchased", "Category", "Purchase Amount (USD)",
@@ -84,7 +83,6 @@ column_info = {
         "The payment method used (Credit Card, PayPal, etc.). Indicates financial behaviour.",
         "The frequency of purchases made by the customer, helping assess loyalty (e.g., 'Weekly', 'Quarterly')."
     ],
-    # Data Type fixed to "Numerical" or "Categorical" as requested
     "Data Type": [
         "Numerical (Identifier)", 
         "Numerical", 
@@ -113,7 +111,3 @@ columns_df = pd.DataFrame(column_info)
 # Display the table in Streamlit
 st.write("### Dataset Column Descriptions")
 st.dataframe(columns_df)
-
-# Optionally, load and display the dataset (example path, you should replace with your actual dataset)
-# data = pd.read_csv("shopping_behavior_data.csv")
-# st.write("### Sample Data", data.head())
