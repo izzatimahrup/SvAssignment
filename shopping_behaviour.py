@@ -24,16 +24,7 @@ def load_data(url):
 # Define the URL
 url = 'https://raw.githubusercontent.com/izzatimahrup/SvAssignment/refs/heads/main/shopping_behaviour_cleaned.csv'
 
-# Load the data
-df = load_data(url)
 
-# Exit if data loading failed
-if df.empty:
-    st.stop()
-
-# Display the first few rows of the data
-st.subheader("Raw Data Preview")
-st.dataframe(df.head())
 
 # --- Plotly Visualizations ---
 
