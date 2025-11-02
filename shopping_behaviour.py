@@ -55,20 +55,17 @@ fig1 = px.box(
     color='Age Group' # Add color for distinction
 )
 fig1.update_layout(xaxis={'categoryorder':'array', 'categoryarray':age_order}) # Enforce order
-st.plotly_chart(fig1, use_container_width=True)
-
-st.markdown("---")
-
-st.plotly_chart(fig1, use_container_width=True)
+st.plotly_chart(fig1, use_container_width=True, key='chart_1_purchase_amount')
 
 st.markdown("""
 <div style='background-color: #f0f2f6; padding: 10px; border-radius: 5px;'>
-    ** 📝 Interpretation:**
+    **📝 Interpretation:**
     
     The **box plot shows the relationship** between **customer age segments and the distribution of their purchase amounts** (value).
     The key trend indicates that the **36-45 and 46-55 age groups** have the highest median spending, directly supporting the objective of identifying the most valuable segments for high-revenue targeting.
 </div>
 """, unsafe_allow_html=True)
+
 st.markdown("---")
 
 # 2. Grouped Bar Chart of Age Group vs Category (Interactive)
@@ -83,21 +80,18 @@ fig5 = px.histogram(
     title='Category Distribution by Age Group '
 )
 fig5.update_layout(xaxis={'categoryorder':'array', 'categoryarray':age_order}) # Enforce order
-st.plotly_chart(fig5, use_container_width=True)
-
-st.markdown("---") 
-
-st.plotly_chart(fig5, use_container_width=True)
+st.plotly_chart(fig5, use_container_width=True, key='chart_5_category_contrib')
 
 st.markdown("""
 <div style='background-color: #f0f2f6; padding: 10px; border-radius: 5px;'>
-    ** 📝 Interpretation:**
+    **📝 Interpretation:**
     
     The **bar chart shows the relationship** between **customer age segments and their total contribution to specific product categories** (preference).
     The key trend is that **Clothing is the most popular category overall**, while revealing that younger customers (18-35) drive higher sales in Footwear, which supports the objective of optimizing inventory and targeted product placement.
 </div>
 """, unsafe_allow_html=True) 
-st.markdown("---")
+
+st.markdown("---") 
 
 # 3. Stacked Bar Chart of Purchase Frequency vs Gender (Interactive)
 st.subheader("3. Purchase Frequency vs. Gender")
@@ -112,20 +106,17 @@ fig3 = px.bar(
     title='Purchase Frequency vs. Gender ',
     color_discrete_map={'Female': 'lightpink', 'Male': 'steelblue'}
 )
-st.plotly_chart(fig3, use_container_width=True)
-
-st.markdown("---")
-
-st.plotly_chart(fig3, use_container_width=True)
+st.plotly_chart(fig3, use_container_width=True, key='chart_3_freq_gender')
 
 st.markdown("""
 <div style='background-color: #f0f2f6; padding: 10px; border-radius: 5px;'>
-    ** 📝 Interpretation:*
+    **📝 Interpretation:**
     
     The **stacked bar chart shows the relationship** between **customer gender and how frequently they make purchases** (loyalty).
     The trend clearly highlights that **Male customers** exhibit a higher total purchase frequency across all timeframes, which is crucial for understanding the primary driver of repeat business volume and designing loyalty programs.
 </div>
 """, unsafe_allow_html=True) 
+
 st.markdown("---")
 
 # ################################################################################################
