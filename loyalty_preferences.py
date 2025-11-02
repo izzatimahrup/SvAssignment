@@ -47,7 +47,7 @@ st.header("📊 Visualizations of Objectives 3")
 st.markdown("To explores how product preferences, such as item category and color, alongside customer loyalty factors like subscriptions and previous purchases, affect consumer decision-making. It aims to understand how loyalty and product choices influence overall purchase frequency and amounts spent.")
 
 st.header("🔎 Summary")
-st.markdown("This analysis explores customer loyalty and preference patterns. Subscribers show significantly higher purchase volume across all frequency categories, confirming that subscription status is a strong loyalty indicator. The data also reveals a positive correlation between purchase frequency and amount, meaning customers who shop more often tend to spend more per transaction. Conversely, the sheer number of previous purchases has a weaker direct correlation with the current purchase amount.")
+st.markdown("This analysis explores how customer loyalty and product preference drive purchase behavior. While Non-Subscribed customers drive the largest overall purchase volume, the data reveals that product preference is the key behavioral driver, with the Clothing category dominating high-frequency transactions. Crucially, loyalty factors are shown to be weak drivers of increased spending: the number of previous purchases has a weak direct correlation with the current purchase amount, confirming a gap in the incentive structure for highly loyal customers.")
 
 # Define the Age Group order for consistent plotting
 
@@ -67,6 +67,13 @@ try:
     st.plotly_chart(fig2, use_container_width=True)
 except Exception as e:
     st.error(f"Error creating chart 2: {e}") 
+
+st.subheader("📝 Interpretation 1:")
+st.markdown("""
+The stacked bar chart clearly reveals that product preference is the primary driver of high frequency, with the Clothing category generating the overwhelming majority of weekly and monthly transactions. This finding confirms the need to anchor all high-frequency marketing, inventory management, and cross-selling efforts around this core category.
+""")
+st.markdown("---")
+
 # 4. Scatter Plot: Previous Purchases vs Purchase Amount
 st.header("2. Relationship: Previous Purchases vs Purchase Amount")
 try:
@@ -111,6 +118,12 @@ try:
 except Exception as e:
     st.error(f"Error creating chart 4: {e}")
 
+st.subheader("📝 Interpretation 2:")
+st.markdown("""
+The scatter plot shows an almost perfectly flat trendline (R-squared near zero), proving that a customer's purchase history does not influence their current spending amount. This indicates a critical failure to upsell loyal customers, meaning the incentive structure must pivot to encourage high-frequency buyers to increase their average basket size.
+""")
+st.markdown("---") 
+
 # 1. Subscription Status vs Purchase Frequency
 st.header("3. Subscription Status vs Purchase Frequency (Count)")
 try:
@@ -127,7 +140,12 @@ try:
     st.plotly_chart(fig1, use_container_width=True)
 except Exception as e:
     st.error(f"Error creating chart 1: {e}")
-
+    
+st.subheader("📝 Interpretation 3:")
+st.markdown("""
+The stacked bar chart shows that the distribution of high-frequency purchases (Weekly/Monthly) is nearly identical between Subscribed and Non-Subscribed customers. This demonstrates that subscription status is failing to convert loyalty into a higher frequency of visits, requiring the business to urgently restructure subscription benefits to incentivize more frequent transactions.
+""")
+st.markdown("---") 
 
 # ##########################################################################################################
 # # 1. Subscription Status vs Purchase Frequency
