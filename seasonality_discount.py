@@ -36,7 +36,7 @@ if df.empty:
 # --- Plotly Visualizations ---
 
 st.header("📊 Visualizations of Objectives 2")
-st.markdown(To investigate how seasonal trends and the use of discount impact consumer purchasing behavior, particularly in terms of how often purchases are made and how much is spent. The analysis will look into how discounts and seasonal changes drive consumer decisions and spending habits.")
+st.markdown("To investigate how seasonal trends and the use of discount impact consumer purchasing behavior, particularly in terms of how often purchases are made and how much is spent. The analysis will look into how discounts and seasonal changes drive consumer decisions and spending habits.")
 
 st.header("🔎 Summary")
 st.markdown("The visualization explores the influence of Seasonality and Discount Application on purchase behavior. Overall, discounts are applied to a minority of transactions, with the majority of purchases not utilizing a discount. The analysis of seasonality reveals that purchase amounts remain remarkably consistent across all four seasons (Spring, Summer, Autumn, Winter), suggesting that environmental changes or holidays have minimal impact on the average value of a single transaction. Furthermore, the rate of discount usage also shows no significant seasonal variation. While product popularity shifts seasonally (e.g., specific categories peaking in certain months), discounts are highly effective, as the average purchase amount is notably higher when a discount is applied compared to transactions without one.")
