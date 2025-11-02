@@ -55,18 +55,14 @@ fig1 = px.box(
     color='Age Group' # Add color for distinction
 )
 fig1.update_layout(xaxis={'categoryorder':'array', 'categoryarray':age_order}) # Enforce order
-st.plotly_chart(fig1, use_container_width=True, key='chart_1_purchase_amount')
-
-st.markdown("""
-<div style='background-color: #f0f2f6; padding: 10px; border-radius: 5px;'>
-    **📝 Interpretation:**
-    
-    The **box plot shows the relationship** between **customer age segments and the distribution of their purchase amounts** (value).
-    The key trend indicates that the **36-45 and 46-55 age groups** have the highest median spending, directly supporting the objective of identifying the most valuable segments for high-revenue targeting.
-</div>
-""", unsafe_allow_html=True)
+st.plotly_chart(fig1, use_container_width=True)
 
 st.markdown("---")
+
+st.subheader("📝 Interpretation:") 
+st.markdown("The box plot shows the relationship between customer age segments and the distribution of their purchase amounts(USD).
+    The key trend indicates that the 36-45 and 46-55 age groups have the highest median spending, directly supporting the objective of identifying the most valuable segments for high-revenue targeting.")
+
 
 # 2. Grouped Bar Chart of Age Group vs Category (Interactive)
 st.subheader("2. Category Distribution by Age Group")
@@ -80,18 +76,21 @@ fig5 = px.histogram(
     title='Category Distribution by Age Group '
 )
 fig5.update_layout(xaxis={'categoryorder':'array', 'categoryarray':age_order}) # Enforce order
-st.plotly_chart(fig5, use_container_width=True, key='chart_5_category_contrib')
+st.plotly_chart(fig5, use_container_width=True)
+
+st.markdown("---") 
+
+st.plotly_chart(fig5, use_container_width=True)
 
 st.markdown("""
 <div style='background-color: #f0f2f6; padding: 10px; border-radius: 5px;'>
-    **📝 Interpretation:**
+    ** 📝 Interpretation:**
     
-    The **bar chart shows the relationship** between **customer age segments and their total contribution to specific product categories** (preference).
-    The key trend is that **Clothing is the most popular category overall**, while revealing that younger customers (18-35) drive higher sales in Footwear, which supports the objective of optimizing inventory and targeted product placement.
+    The *bar chart shows the relationship* between *customer age segments and their total contribution to specific product categories* (preference).
+    The key trend is that *Clothing is the most popular category overall*, while revealing that younger customers (18-35) drive higher sales in Footwear, which supports the objective of optimizing inventory and targeted product placement.
 </div>
 """, unsafe_allow_html=True) 
-
-st.markdown("---") 
+st.markdown("---")
 
 # 3. Stacked Bar Chart of Purchase Frequency vs Gender (Interactive)
 st.subheader("3. Purchase Frequency vs. Gender")
@@ -106,17 +105,20 @@ fig3 = px.bar(
     title='Purchase Frequency vs. Gender ',
     color_discrete_map={'Female': 'lightpink', 'Male': 'steelblue'}
 )
-st.plotly_chart(fig3, use_container_width=True, key='chart_3_freq_gender')
+st.plotly_chart(fig3, use_container_width=True)
+
+st.markdown("---")
+
+st.plotly_chart(fig3, use_container_width=True)
 
 st.markdown("""
 <div style='background-color: #f0f2f6; padding: 10px; border-radius: 5px;'>
-    **📝 Interpretation:**
+    ** 📝 Interpretation:*
     
-    The **stacked bar chart shows the relationship** between **customer gender and how frequently they make purchases** (loyalty).
-    The trend clearly highlights that **Male customers** exhibit a higher total purchase frequency across all timeframes, which is crucial for understanding the primary driver of repeat business volume and designing loyalty programs.
+    The *stacked bar chart shows the relationship* between *customer gender and how frequently they make purchases* (loyalty).
+    The trend clearly highlights that *Male customers* exhibit a higher total purchase frequency across all timeframes, which is crucial for understanding the primary driver of repeat business volume and designing loyalty programs.
 </div>
 """, unsafe_allow_html=True) 
-
 st.markdown("---")
 
 # ################################################################################################
@@ -125,13 +127,13 @@ st.markdown("---")
 # average_purchase_by_gender = df.groupby('Gender')['Purchase Amount (USD)'].mean().reset_index()
 # 
 # fig2 = px.bar(
-#     average_purchase_by_gender,
-#     x='Gender',
-#     y='Purchase Amount (USD)',
-#     color='Gender',
-#     color_discrete_map={'Female': 'lightpink', 'Male': 'steelblue'}, # Use custom colors
-#     text=average_purchase_by_gender['Purchase Amount (USD)'].round(2), # Add labels
-#     title='Average Purchase Amount by Gender'
+#     average_purchase_by_gender,
+#     x='Gender',
+#     y='Purchase Amount (USD)',
+#     color='Gender',
+#     color_discrete_map={'Female': 'lightpink', 'Male': 'steelblue'}, # Use custom colors
+#     text=average_purchase_by_gender['Purchase Amount (USD)'].round(2), # Add labels
+#     title='Average Purchase Amount by Gender'
 # )
 # fig2.update_traces(textposition='outside')
 # st.plotly_chart(fig2, use_container_width=True)
@@ -143,13 +145,13 @@ st.markdown("---")
 # gender_frequency_counts = df.groupby(['Frequency of Purchases', 'Gender'], observed=False).size().reset_index(name='Count')
 # 
 # fig3 = px.bar(
-#     gender_frequency_counts,
-#     y='Frequency of Purchases', # Y-axis for horizontal plot
-#     x='Count',
-#     color='Gender',
-#     orientation='h',
-#     title='Purchase Frequency vs. Gender ',
-#     color_discrete_map={'Female': 'lightpink', 'Male': 'steelblue'}
+#     gender_frequency_counts,
+#     y='Frequency of Purchases', # Y-axis for horizontal plot
+#     x='Count',
+#     color='Gender',
+#     orientation='h',
+#     title='Purchase Frequency vs. Gender ',
+#     color_discrete_map={'Female': 'lightpink', 'Male': 'steelblue'}
 # )
 # st.plotly_chart(fig3, use_container_width=True)
 # 
@@ -160,14 +162,14 @@ st.markdown("---")
 # gender_subscription_counts = df.groupby(['Gender', 'Subscription Status'], observed=False).size().reset_index(name='Count')
 # 
 # fig4 = px.bar(
-#     gender_subscription_counts,
-#     x='Gender',
-#     y='Count',
-#     color='Subscription Status',
-#     title='Gender vs Subscription Status',
-#     labels={'Subscription Status': 'Subscription Status'},
-#     # Updated color map keys to match the new string values ('No' and 'Yes')
-#     color_discrete_map={'No': 'lightcoral', 'Yes': 'mediumseagreen'} 
+#     gender_subscription_counts,
+#     x='Gender',
+#     y='Count',
+#     color='Subscription Status',
+#     title='Gender vs Subscription Status',
+#     labels={'Subscription Status': 'Subscription Status'},
+#     # Updated color map keys to match the new string values ('No' and 'Yes')
+#     color_discrete_map={'No': 'lightcoral', 'Yes': 'mediumseagreen'} 
 # )
 # st.plotly_chart(fig4, use_container_width=True)
 # 
@@ -177,12 +179,12 @@ st.markdown("---")
 # st.subheader("5. Category Distribution by Age Group")
 # 
 # fig5 = px.histogram(
-#     df,
-#     x='Age Group',
-#     color='Category',
-#     category_orders={"Age Group": age_order},
-#     barmode='group',
-#     title='Category Distribution by Age Group '
+#     df,
+#     x='Age Group',
+#     color='Category',
+#     category_orders={"Age Group": age_order},
+#     barmode='group',
+#     title='Category Distribution by Age Group '
 # )
 # fig5.update_layout(xaxis={'categoryorder':'array', 'categoryarray':age_order}) # Enforce order
 # st.plotly_chart(fig5, use_container_width=True)
@@ -195,12 +197,12 @@ st.markdown("---")
 # gender_counts.columns = ['Gender', 'Count']
 # 
 # fig6 = px.pie(
-#     gender_counts,
-#     names='Gender',
-#     values='Count',
-#     title='Distribution of Gender ',
-#     color='Gender',
-#     color_discrete_map={'Female': 'lightpink', 'Male': 'steelblue'}
+#     gender_counts,
+#     names='Gender',
+#     values='Count',
+#     title='Distribution of Gender ',
+#     color='Gender',
+#     color_discrete_map={'Female': 'lightpink', 'Male': 'steelblue'}
 # )
 # st.plotly_chart(fig6, use_container_width=True)
 # 
@@ -210,11 +212,11 @@ st.markdown("---")
 # st.subheader("7. Distribution of Age Groups")
 # 
 # fig7 = px.histogram(
-#     df,
-#     x='Age Group',
-#     category_orders={"Age Group": age_order},
-#     color='Age Group',
-#     title='Distribution of Age Groups '
+#     df,
+#     x='Age Group',
+#     category_orders={"Age Group": age_order},
+#     color='Age Group',
+#     title='Distribution of Age Groups '
 # )
 # fig7.update_layout(xaxis={'categoryorder':'array', 'categoryarray':age_order}) # Enforce order
 # st.plotly_chart(fig7, use_container_width=True)
