@@ -56,6 +56,12 @@ fig1 = px.pie(discount_counts, names='Discount Applied', values='Count',
 fig1.update_traces(textposition='inside', textinfo='percent+label')
 st.plotly_chart(fig1, use_container_width=True) # CORRECTED
 
+st.subheader("📝 Interpretation 1:")
+st.markdown("""
+The pie chart shows that 43% of customer transactions involve a discount, establishing a high baseline for discount usage frequency. This directly impacts the objective by confirming that discounts are a significant driver of individual purchase decisions, making them key to influencing customer behavior and transaction count.
+""")
+st.markdown("---")
+
 st.header("2. Average Purchase Amount with/without Discount")
 avg_purchase_discount = df.groupby('Discount Applied')['Purchase Amount (USD)'].mean().reset_index().round(2)
 fig5 = px.bar(avg_purchase_discount, x='Discount Applied', y='Purchase Amount (USD)',
@@ -65,6 +71,12 @@ fig5.update_traces(textposition='outside')
 fig5.update_layout(yaxis_title="Average Purchase Amount (USD)")
 st.plotly_chart(fig5, use_container_width=True) # CORRECTED
 
+st.subheader("📝 Interpretation 2:")
+st.markdown("""
+The bar chart reveals that the average customer spend per transaction is slightly lower when a discount is used ($\$59.28$) compared to a non-discounted transaction ($\$60.15$), a critical finding for analyzing spending patterns. The direct impact is that the current discount strategy is failing to motivate customers to add more items to their basket (up-sell) to increase their individual transaction value.
+""")
+st.markdown("---")
+
 st.header("3. Purchase Amount Distribution by Season")
 fig2 = px.violin(df, x='Season', y='Purchase Amount (USD)',
                  color='Season', box=True, points='outliers',
@@ -73,7 +85,11 @@ fig2 = px.violin(df, x='Season', y='Purchase Amount (USD)',
                  category_orders={"Season": season_order})
 st.plotly_chart(fig2, use_container_width=True) # CORRECTED
 
-
+st.subheader("📝 Interpretation 3:")
+st.markdown("""
+The violin plots show that the distribution of individual purchase amounts is stable across all four seasons (Q1-Q4). This directly supports the objective by indicating that seasonality does not influence how much a customer is willing to spend in a single transaction, suggesting that promotions should focus on what customers buy seasonally, rather than trying to change their total spending amount per visit.
+""")
+st.markdown("---")
 
 # ####################################################################################################################
 #st.header("1. Seasonal Discount Usage (Count)")
