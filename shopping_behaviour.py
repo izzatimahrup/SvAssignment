@@ -59,6 +59,40 @@ st.plotly_chart(fig1, use_container_width=True)
 
 st.markdown("---")
 
+# 2. Grouped Bar Chart of Age Group vs Category (Interactive)
+st.subheader("2. Category Distribution by Age Group")
+
+fig5 = px.histogram(
+    df,
+    x='Age Group',
+    color='Category',
+    category_orders={"Age Group": age_order},
+    barmode='group',
+    title='Category Distribution by Age Group '
+)
+fig5.update_layout(xaxis={'categoryorder':'array', 'categoryarray':age_order}) # Enforce order
+st.plotly_chart(fig5, use_container_width=True)
+
+st.markdown("---") 
+
+# 3. Stacked Bar Chart of Purchase Frequency vs Gender (Interactive)
+st.subheader("3. Purchase Frequency vs. Gender")
+gender_frequency_counts = df.groupby(['Frequency of Purchases', 'Gender'], observed=False).size().reset_index(name='Count')
+
+fig3 = px.bar(
+    gender_frequency_counts,
+    y='Frequency of Purchases', # Y-axis for horizontal plot
+    x='Count',
+    color='Gender',
+    orientation='h',
+    title='Purchase Frequency vs. Gender ',
+    color_discrete_map={'Female': 'lightpink', 'Male': 'steelblue'}
+)
+st.plotly_chart(fig3, use_container_width=True)
+
+st.markdown("---")
+
+################################################################################################
 # 2. Bar Chart of Gender vs Purchase Amount (Interactive)
 st.subheader("2. Average Purchase Amount by Gender")
 average_purchase_by_gender = df.groupby('Gender')['Purchase Amount (USD)'].mean().reset_index()
@@ -157,3 +191,4 @@ fig7 = px.histogram(
 )
 fig7.update_layout(xaxis={'categoryorder':'array', 'categoryarray':age_order}) # Enforce order
 st.plotly_chart(fig7, use_container_width=True)
+#################################################################################################
