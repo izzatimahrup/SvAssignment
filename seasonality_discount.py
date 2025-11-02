@@ -73,7 +73,7 @@ st.plotly_chart(fig5, use_container_width=True) # CORRECTED
 
 st.subheader("📝 Interpretation 2:")
 st.markdown("""
-The bar chart reveals that the average customer spend per transaction is slightly lower when a discount is used ($59.28) compared to a non-discounted transaction ($60.15$), a critical finding for analyzing spending patterns. The direct impact is that the current discount strategy is failing to motivate customers to add more items to their basket (up-sell) to increase their individual transaction value.
+The bar chart reveals that the average customer spend per transaction is slightly lower when a discount is used ($59.28) compared to a non-discounted transaction ($60.15), a critical finding for analyzing spending patterns. The direct impact is that the current discount strategy is failing to motivate customers to add more items to their basket (up-sell) to increase their individual transaction value.
 """)
 st.markdown("---")
 
