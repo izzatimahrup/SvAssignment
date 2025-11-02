@@ -39,7 +39,7 @@ st.header("📊 Visualizations of Objectives 2")
 st.markdown("To investigate how seasonal trends and the use of discount impact consumer purchasing behavior, particularly in terms of how often purchases are made and how much is spent. The analysis will look into how discounts and seasonal changes drive consumer decisions and spending habits.")
 
 st.header("🔎 Summary")
-st.markdown("The visualization explores the influence of Seasonality and Discount Application on purchase behavior. Overall, discounts are applied to a minority of transactions, with the majority of purchases not utilizing a discount. The analysis of seasonality reveals that purchase amounts remain remarkably consistent across all four seasons (Spring, Summer, Autumn, Winter), suggesting that environmental changes or holidays have minimal impact on the average value of a single transaction. Furthermore, the rate of discount usage also shows no significant seasonal variation. While product popularity shifts seasonally (e.g., specific categories peaking in certain months), discounts are highly effective, as the average purchase amount is notably higher when a discount is applied compared to transactions without one.")
+st.markdown("The visualization explores the influence of Seasonality and Discount Application on purchase behavior. Discounts are applied to a significant portion of transactions (43%), establishing them as a key influence on purchase frequency. Analysis of spending patterns reveals that purchase amounts remain consistent across all four seasons, indicating that environmental changes have minimal influence on individual transaction value. Crucially, the average purchase amount is slightly lower when a discount is applied, suggesting that the current discount strategy is not effectively encouraging customers to increase their overall spending (basket size) per transaction.")
 
 # --- Streamlit Page Content ---
 
@@ -73,7 +73,7 @@ st.plotly_chart(fig5, use_container_width=True) # CORRECTED
 
 st.subheader("📝 Interpretation 2:")
 st.markdown("""
-The bar chart reveals that the average customer spend per transaction is slightly lower when a discount is used ($\$59.28$) compared to a non-discounted transaction ($\$60.15$), a critical finding for analyzing spending patterns. The direct impact is that the current discount strategy is failing to motivate customers to add more items to their basket (up-sell) to increase their individual transaction value.
+The bar chart reveals that the average customer spend per transaction is slightly lower when a discount is used ($59.28) compared to a non-discounted transaction ($60.15$), a critical finding for analyzing spending patterns. The direct impact is that the current discount strategy is failing to motivate customers to add more items to their basket (up-sell) to increase their individual transaction value.
 """)
 st.markdown("---")
 
