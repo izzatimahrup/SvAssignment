@@ -39,7 +39,7 @@ st.header("📊 Visualizations of Objectives 1")
 st.markdown("To examine how key demographic factors like age, gender, and location influence consumer spending patterns and shopping frequency. By analyzing these variables, the study seeks to identify differences in purchasing behavior across various demographic groups.")
 
 st.header("🔎 Summary")
-st.markdown("The visualizations explore how age and gender influence consumer spending and shopping frequency. The box plot shows a higher purchase amount in older age groups, particularly those aged 36-45 and above. The bar chart comparing gender vs purchase amount reveals that males tend to spend slightly more than females on average. The purchase frequency vs gender stacked bar chart shows that both male and female shoppers exhibit similar frequencies of purchases, although there are slight variations in product category preferences. These findings indicate that age and gender both play a role in shaping consumer spending behavior, with older individuals and males spending more, but frequency remains consistent across gender.")
+st.markdown("This dashboard offers a focused view of customer spending and loyalty patterns driven by age and gender. The analysis reveals that customers in the 35-44 age segment are responsible for the largest transaction values. Distinct age groups show concentrated purchasing preferences, driving contributions primarily in the Clothing and Electronics categories. Furthermore, the data highlights that Female customers exhibit a noticeably higher average purchase frequency. Overall, these findings isolate the most valuable demographics in terms of spending power and loyalty, providing a clear foundation for optimized product placement and targeted marketing efforts.")
 
 # Define the Age Group order for consistent plotting
 age_order = ['18–25', '26–35', '36–45', '46–55', '56–65', '65+']
@@ -59,6 +59,17 @@ st.plotly_chart(fig1, use_container_width=True)
 
 st.markdown("---")
 
+st.plotly_chart(fig1, use_container_width=True)
+
+st.markdown("""
+<div style='background-color: #f0f2f6; padding: 10px; border-radius: 5px;'>
+    ** 📝 Interpretation:**
+    
+    The **box plot shows the relationship** between **customer age segments and the distribution of their purchase amounts** (value).
+    The key trend indicates that the **36-45 and 46-55 age groups** have the highest median spending, directly supporting the objective of identifying the most valuable segments for high-revenue targeting.
+</div>
+""", unsafe_allow_html=True)
+
 # 2. Grouped Bar Chart of Age Group vs Category (Interactive)
 st.subheader("2. Category Distribution by Age Group")
 
@@ -74,6 +85,17 @@ fig5.update_layout(xaxis={'categoryorder':'array', 'categoryarray':age_order}) #
 st.plotly_chart(fig5, use_container_width=True)
 
 st.markdown("---") 
+
+st.plotly_chart(fig5, use_container_width=True)
+
+st.markdown("""
+<div style='background-color: #f0f2f6; padding: 10px; border-radius: 5px;'>
+    ** 📝 Interpretation:**
+    
+    The **bar chart shows the relationship** between **customer age segments and their total contribution to specific product categories** (preference).
+    The key trend is that **Clothing is the most popular category overall**, while revealing that younger customers (18-35) drive higher sales in Footwear, which supports the objective of optimizing inventory and targeted product placement.
+</div>
+""", unsafe_allow_html=True) 
 
 # 3. Stacked Bar Chart of Purchase Frequency vs Gender (Interactive)
 st.subheader("3. Purchase Frequency vs. Gender")
@@ -92,6 +114,16 @@ st.plotly_chart(fig3, use_container_width=True)
 
 st.markdown("---")
 
+st.plotly_chart(fig3, use_container_width=True)
+
+st.markdown("""
+<div style='background-color: #f0f2f6; padding: 10px; border-radius: 5px;'>
+    ** 📝 Interpretation:*
+    
+    The **stacked bar chart shows the relationship** between **customer gender and how frequently they make purchases** (loyalty).
+    The trend clearly highlights that **Male customers** exhibit a higher total purchase frequency across all timeframes, which is crucial for understanding the primary driver of repeat business volume and designing loyalty programs.
+</div>
+""", unsafe_allow_html=True) 
 # ################################################################################################
 # # 2. Bar Chart of Gender vs Purchase Amount (Interactive)
 # st.subheader("2. Average Purchase Amount by Gender")
