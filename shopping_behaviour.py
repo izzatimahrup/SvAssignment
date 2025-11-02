@@ -55,7 +55,7 @@ fig1 = px.box(
 fig1.update_layout(xaxis={'categoryorder':'array', 'categoryarray':age_order}) # Enforce order
 st.plotly_chart(fig1, use_container_width=True)
 
-st.subheader("📝 Interpretation 1: Age vs. Purchase Value")
+st.subheader("📝 Interpretation 1:")
 st.markdown("""
 The **box plot** illustrates the distribution of purchase amounts across various **customer age segments**.
 The key finding is that the **36-45 and 46-55 age groups** show the highest median spending (as indicated by the line within the box). This directly supports the objective of identifying the most valuable segments for high-revenue targeting. The spread of the data (the box size) also shows that these groups have a consistently high spending range.
@@ -76,7 +76,7 @@ fig5 = px.histogram(
 fig5.update_layout(xaxis={'categoryorder':'array', 'categoryarray':age_order}) # Enforce order
 st.plotly_chart(fig5, use_container_width=True)
 
-st.subheader("📝 Interpretation 2: Age vs. Product Preference")
+st.subheader("📝 Interpretation 2:")
 st.markdown("""
 The **grouped bar chart** details the total contribution of each age segment to specific product **categories**.
 The key trend is that **Clothing** is the most popular category overall across all age groups. More specifically, younger customers (**18-35**) show a higher relative volume of purchases in **Footwear** compared to older demographics. This insight is crucial for optimizing inventory and targeted product placement based on age-specific preferences.
@@ -98,7 +98,7 @@ fig3 = px.bar(
 )
 st.plotly_chart(fig3, use_container_width=True)
 
-st.subheader("📝 Interpretation 3: Gender vs. Purchase Loyalty (Frequency)")
+st.subheader("📝 Interpretation 3:")
 st.markdown("""
 The **stacked bar chart** examines how frequently customers make purchases based on **gender** (a measure of loyalty).
 The trend clearly highlights that **Female customers** exhibit a higher total purchase frequency across almost all timeframes (e.g., Weekly, Bi-Weekly, Monthly) compared to Male customers. This is a critical finding for understanding the primary driver of repeat business volume and for designing effective gender-specific loyalty and retention programs.
