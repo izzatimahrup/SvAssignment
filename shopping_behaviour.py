@@ -69,6 +69,7 @@ st.markdown("""
     The key trend indicates that the **36-45 and 46-55 age groups** have the highest median spending, directly supporting the objective of identifying the most valuable segments for high-revenue targeting.
 </div>
 """, unsafe_allow_html=True)
+st.markdown("---")
 
 # 2. Grouped Bar Chart of Age Group vs Category (Interactive)
 st.subheader("2. Category Distribution by Age Group")
@@ -96,6 +97,7 @@ st.markdown("""
     The key trend is that **Clothing is the most popular category overall**, while revealing that younger customers (18-35) drive higher sales in Footwear, which supports the objective of optimizing inventory and targeted product placement.
 </div>
 """, unsafe_allow_html=True) 
+st.markdown("---")
 
 # 3. Stacked Bar Chart of Purchase Frequency vs Gender (Interactive)
 st.subheader("3. Purchase Frequency vs. Gender")
@@ -124,6 +126,8 @@ st.markdown("""
     The trend clearly highlights that **Male customers** exhibit a higher total purchase frequency across all timeframes, which is crucial for understanding the primary driver of repeat business volume and designing loyalty programs.
 </div>
 """, unsafe_allow_html=True) 
+st.markdown("---")
+
 # ################################################################################################
 # # 2. Bar Chart of Gender vs Purchase Amount (Interactive)
 # st.subheader("2. Average Purchase Amount by Gender")
