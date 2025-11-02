@@ -56,8 +56,16 @@ fig1 = px.pie(discount_counts, names='Discount Applied', values='Count',
 fig1.update_traces(textposition='inside', textinfo='percent+label')
 st.plotly_chart(fig1, use_container_width=True) # CORRECTED
 
+st.header("2. Average Purchase Amount with/without Discount")
+avg_purchase_discount = df.groupby('Discount Applied')['Purchase Amount (USD)'].mean().reset_index().round(2)
+fig5 = px.bar(avg_purchase_discount, x='Discount Applied', y='Purchase Amount (USD)',
+              color='Discount Applied', text='Purchase Amount (USD)',
+              title='Average Purchase Amount by Discount Status', color_discrete_map=discount_map)
+fig5.update_traces(textposition='outside')
+fig5.update_layout(yaxis_title="Average Purchase Amount (USD)")
+st.plotly_chart(fig5, use_container_width=True) # CORRECTED
 
-st.header("2. Purchase Amount Distribution by Season")
+st.header("3. Purchase Amount Distribution by Season")
 fig2 = px.violin(df, x='Season', y='Purchase Amount (USD)',
                  color='Season', box=True, points='outliers',
                  title='Purchase Amount Distribution by Season',
@@ -66,27 +74,47 @@ fig2 = px.violin(df, x='Season', y='Purchase Amount (USD)',
 st.plotly_chart(fig2, use_container_width=True) # CORRECTED
 
 
-st.header("3. Seasonal Discount Usage (Count)")
-season_discount_counts = df.groupby(['Season', 'Discount Applied'], observed=False).size().reset_index(name='Count')
-fig3 = px.bar(season_discount_counts, x='Season', y='Count',
-              color='Discount Applied', title='Discount Application Count by Season',
-              color_discrete_map=discount_map,
-              category_orders={"Season": season_order})
-st.plotly_chart(fig3, use_container_width=True) # CORRECTED
+
+# ####################################################################################################################
+#st.header("1. Seasonal Discount Usage (Count)")
+#season_discount_counts = df.groupby(['Season', 'Discount Applied'], observed=False).size().reset_index(name='Count')
+#fig3 = px.bar(season_discount_counts, x='Season', y='Count',
+#             color='Discount Applied', title='Discount Application Count by Season',
+#             color_discrete_map=discount_map,
+#             category_orders={"Season": season_order})
+#st.plotly_chart(fig3, use_container_width=True) # CORRECTED
+ 
+#st.header("2. Purchase Amount Distribution by Season")
+#fig2 = px.violin(df, x='Season', y='Purchase Amount (USD)',
+#                color='Season', box=True, points='outliers',
+#                title='Purchase Amount Distribution by Season',
+#                color_discrete_sequence=px.colors.sequential.Agsunset,
+#                category_orders={"Season": season_order})
+#st.plotly_chart(fig2, use_container_width=True) # CORRECTED
 
 
-st.header("4. Product Category Popularity by Season (Count)")
-fig4 = px.histogram(df, x='Season', color='Category',
-                    title='Product Category Counts by Season', barmode='group',
-                    category_orders={"Season": season_order})
-st.plotly_chart(fig4, use_container_width=True) # CORRECTED
+#st.header("3. Seasonal Discount Usage (Count)")
+#season_discount_counts = df.groupby(['Season', 'Discount Applied'], observed=False).size().reset_index(name='Count')
+#fig3 = px.bar(season_discount_counts, x='Season', y='Count',
+#             color='Discount Applied', title='Discount Application Count by Season',
+#              color_discrete_map=discount_map,
+#             category_orders={"Season": season_order})
+#st.plotly_chart(fig3, use_container_width=True) # CORRECTED
 
 
-st.header("5. Average Purchase Amount with/without Discount")
-avg_purchase_discount = df.groupby('Discount Applied')['Purchase Amount (USD)'].mean().reset_index().round(2)
-fig5 = px.bar(avg_purchase_discount, x='Discount Applied', y='Purchase Amount (USD)',
-              color='Discount Applied', text='Purchase Amount (USD)',
-              title='Average Purchase Amount by Discount Status', color_discrete_map=discount_map)
-fig5.update_traces(textposition='outside')
-fig5.update_layout(yaxis_title="Average Purchase Amount (USD)")
-st.plotly_chart(fig5, use_container_width=True) # CORRECTED
+#st.header("4. Product Category Popularity by Season (Count)")
+#fig4 = px.histogram(df, x='Season', color='Category',
+#                    title='Product Category Counts by Season', barmode='group',
+#                   category_orders={"Season": season_order})
+#st.plotly_chart(fig4, use_container_width=True) # CORRECTED
+
+
+#st.header("5. Average Purchase Amount with/without Discount")
+#avg_purchase_discount = df.groupby('Discount Applied')['Purchase Amount (USD)'].mean().reset_index().round(2)
+#fig5 = px.bar(avg_purchase_discount, x='Discount Applied', y='Purchase Amount (USD)',
+#              color='Discount Applied', text='Purchase Amount (USD)',
+#              title='Average Purchase Amount by Discount Status', color_discrete_map=discount_map)
+#fig5.update_traces(textposition='outside')
+#fig5.update_layout(yaxis_title="Average Purchase Amount (USD)")
+#st.plotly_chart(fig5, use_container_width=True) # CORRECTED
+# ####################################################################################################################
