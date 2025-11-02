@@ -1,7 +1,7 @@
-import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import streamlit as st
 
 # --- Configuration and Data Loading ---
 st.set_page_config(layout="wide")
@@ -17,10 +17,8 @@ def load_data(url):
         # Convert Gender to string for better categorical plotting
         df['Gender'] = df['Gender'].map({1: 'Male', 0: 'Female'})
         
-        # --- MODIFICATION START ---
-        # Convert Subscription Status to string (1: 'Yes', 0: 'No') as requested
+        # Convert Subscription Status to string (1: 'Yes', 0: 'No')
         df['Subscription Status'] = df['Subscription Status'].map({1: 'Yes', 0: 'No'})
-        # --- MODIFICATION END ---
         
         return df
     except Exception as e:
@@ -39,7 +37,7 @@ st.header("📊 Visualizations of Objectives 1")
 st.markdown("To examine how key demographic factors like age, gender, and location influence consumer spending patterns and shopping frequency. By analyzing these variables, the study seeks to identify differences in purchasing behavior across various demographic groups.")
 
 st.header("🔎 Summary")
-st.markdown("This dashboard offers a focused view of customer spending and loyalty patterns driven by age and gender. The analysis reveals that customers in the 35-44 age segment are responsible for the largest transaction values. Distinct age groups show concentrated purchasing preferences, driving contributions primarily in the Clothing and Electronics categories. Furthermore, the data highlights that Female customers exhibit a noticeably higher average purchase frequency. Overall, these findings isolate the most valuable demographics in terms of spending power and loyalty, providing a clear foundation for optimized product placement and targeted marketing efforts.")
+st.markdown("This dashboard offers a focused view of customer spending and loyalty patterns driven by age and gender. The analysis reveals that customers in the **35-44 age segment** are responsible for the largest transaction values. Distinct age groups show concentrated purchasing preferences, driving contributions primarily in the **Clothing and Electronics** categories. Furthermore, the data highlights that **Female customers** exhibit a noticeably higher average purchase frequency. Overall, these findings isolate the most valuable demographics in terms of spending power and loyalty, providing a clear foundation for optimized product placement and targeted marketing efforts.")
 
 # Define the Age Group order for consistent plotting
 age_order = ['18–25', '26–35', '36–45', '46–55', '56–65', '65+']
@@ -56,9 +54,10 @@ fig1 = px.box(
 )
 fig1.update_layout(xaxis={'categoryorder':'array', 'categoryarray':age_order}) # Enforce order
 st.plotly_chart(fig1, use_container_width=True)
+
 st.subheader("📝 Interpretation 1: Age vs. Purchase Value")
 st.markdown("""
-The box plot illustrates the distribution of purchase amounts across various customer age segments.
+The **box plot** illustrates the distribution of purchase amounts across various **customer age segments**.
 The key finding is that the **36-45 and 46-55 age groups** show the highest median spending (as indicated by the line within the box). This directly supports the objective of identifying the most valuable segments for high-revenue targeting. The spread of the data (the box size) also shows that these groups have a consistently high spending range.
 """)
 st.markdown("---")
@@ -105,7 +104,7 @@ The **stacked bar chart** examines how frequently customers make purchases based
 The trend clearly highlights that **Female customers** exhibit a higher total purchase frequency across almost all timeframes (e.g., Weekly, Bi-Weekly, Monthly) compared to Male customers. This is a critical finding for understanding the primary driver of repeat business volume and for designing effective gender-specific loyalty and retention programs.
 """)
 st.markdown("---")
-")
+
 
 # ################################################################################################
 # # 2. Bar Chart of Gender vs Purchase Amount (Interactive)
